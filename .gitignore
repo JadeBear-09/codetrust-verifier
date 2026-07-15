@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+.env
+dist/
+build/
+*.egg-info/
+reports/**
+!reports/.gitkeep
+.codetrust/
+artifacts/
