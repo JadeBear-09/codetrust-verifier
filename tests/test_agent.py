@@ -41,7 +41,7 @@ def test_safe_change_passes() -> None:
     assert report.risk_score == 0
 
 
-def test_business_scope_drift_needs_product_review() -> None:
+def test_explicit_business_scope_drift_blocks_change() -> None:
     ticket = """# Payment retry telemetry
 
 ## In scope
@@ -75,7 +75,7 @@ def test_business_scope_drift_needs_product_review() -> None:
     )
 
     ids = {finding.rule_id for finding in report.findings}
-    assert report.verdict is Verdict.NEEDS_REVIEW
+    assert report.verdict is Verdict.BLOCK
     assert {"CT-SCOPE-001", "CT-INTERP-001"} <= ids
     assert report.scope_drift == 100
     assert report.unresolved_questions

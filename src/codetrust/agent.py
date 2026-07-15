@@ -140,6 +140,8 @@ def verify_change(
 
 
 def _verdict(findings, score: int) -> Verdict:
+    if any(item.rule_id == "CT-SCOPE-001" for item in findings):
+        return Verdict.BLOCK
     if any(item.severity is Severity.CRITICAL for item in findings) or score >= 70:
         return Verdict.BLOCK
     if any(item.severity is Severity.HIGH for item in findings) or score >= 35:
