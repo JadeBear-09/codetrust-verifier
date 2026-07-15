@@ -128,7 +128,7 @@ def test_dashboard_routes_interpretation_conflict() -> None:
     )
 
     assert response.status_code == 200
-    assert response.json()["verdict"] == "NEEDS_REVIEW"
+    assert response.json()["verdict"] == "BLOCK"
 
 
 def test_creates_product_workspace_and_jira_task(monkeypatch, tmp_path) -> None:
